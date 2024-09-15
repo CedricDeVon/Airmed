@@ -13,6 +13,7 @@ useSeoMeta({
 
 <template>
   <main>
+    <NavBar/>
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>

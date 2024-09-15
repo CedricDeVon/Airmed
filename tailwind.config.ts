@@ -13,7 +13,15 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {}
+    extend: {},
+    colors: {
+      'light-a': '#FFFFFF',
+      'dark-a': '#717399',
+      'dark-b': '#131235',
+      'dark-c': '#0F0F0F',
+      'wildcard-a': '#0919FF',
+      'wildcard-b': '#FF090D'
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),
