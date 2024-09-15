@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
-    'nuxt-icon',
+    '@nuxt/icon',
     'nuxt-headlessui',
     'nuxt-vitest',
     '@nuxt/devtools'
@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     reactivityTransform: true
   },
 
-  css: ['~/assets/css/style.scss'],
+  css: ['~/assets/css/main.scss'],
 
   postcss: {
     plugins: {
@@ -35,5 +35,12 @@ export default defineNuxtConfig({
   headlessui: {
     prefix: ''
   },
-  compatibilityDate: '2024-08-24'
+  compatibilityDate: '2024-08-24',
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      title: "Airmed",
+    }
+  }
 })
