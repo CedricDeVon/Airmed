@@ -17,5 +17,6 @@ useSeoMeta({
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
+    <Footer/>
   </main>
 </template>
