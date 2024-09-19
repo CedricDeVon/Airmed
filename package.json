@@ -23,6 +23,7 @@
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.15",
+    "@types/vue-router": "^2.0.0",
     "@vueuse/nuxt": "^11.0.3",
     "config": "^3.3.12",
     "cypress": "^13.14.2",
@@ -45,6 +46,8 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "primeicons": "^7.0.0",
+    "vue-spinner": "^1.0.4",
+    "vue-toastification": "^1.7.14",
     "winston": "^3.14.2"
   }
 }

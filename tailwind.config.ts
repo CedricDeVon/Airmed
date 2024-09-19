@@ -11,6 +11,12 @@ export default {
     './App.{js,ts,vue}',
     './app.{js,ts,vue}'
   ],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/container-queries')
+  ],
   darkMode: 'class',
   theme: {
     extend: {},
@@ -23,10 +29,4 @@ export default {
       'wildcard-b': '#FF090D'
     }
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/container-queries')
-  ]
-} satisfies Config
+} satisfies Config;

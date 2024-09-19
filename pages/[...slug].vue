@@ -1,26 +1,20 @@
-<script setup>
+<script setup type="ts">
 </script>
 
 <template>
-    <div class="mx-auto max-w-7xl h-screen px-4 sm:px-6 lg:px-8">
-        <div class="w-full flex justify-center">
-            <div class="max-w-md md:max-w-lg px-4 pt-10 md:pt-20 text-center">
-                <div class="pb-6 md:pb-8 text-5xl md:text-6xl">
-                    <h1 class="font-extrabold mb-1 text-wildcard-a">
-                        404
-                    </h1>
-                    <h2>
-                        Not Found
-                    </h2>
-                </div>
-                <div class="pb-6 md:pb-8 text-sm md:text-xl max-w-50">
-                    <p>The requested resource does not exist.</p>
-                </div>
-                <div class="flex flex-column justify-center">
-                    <RouterLink to="/" class="px-10 py-2 bg-wildcard-a text-light-a rounded-lg hover:bg-dark-b">
-                        Return Home
-                    </RouterLink>
-                </div>
+    <div class="flex justify-center w-full h-screen mx-auto lg:px-8 sm:px-6 px-4">
+        <div class="md:max-w-lg max-w-md px-4 md:pt-20 pt-10 text-center">
+            <div class="md:pb-8 pb-6 md:text-6xl text-5xl">
+                <h1 class="font-extrabold text-wildcard-a">404</h1>
+                <h2>Resource Not Found</h2>
+            </div>
+            <div class="max-w-50 md:pb-8 pb-6 md:text-xl text-sm">
+                <p>What you seek does not exist.</p>
+            </div>
+            <div class="flex flex-column justify-center">
+                <NuxtLink to="/" class="rounded-lg px-10 py-2 bg-wildcard-a hover:bg-dark-b text-light-a">
+                    Return Home
+                </NuxtLink>
             </div>
         </div>
     </div>

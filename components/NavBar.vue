@@ -1,57 +1,54 @@
-<script setup>
-import { RouterLink, useRoute } from 'vue-router';
+<script setup type="ts">
+import { useRoute } from 'vue-router';
 
 const isActiveLink = (routePath) => {
-  const route = useRoute();
-  return route.path === routePath;
+  return useRoute().path === routePath;
 };
 </script>
 
 <template>
-  <nav class="bg-white">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="flex h-20 items-center justify-between">
+    <nav class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
         <div
-          class="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
+          class="flex flex-1 justify-center items-center md:items-stretch md:justify-start"
         >
-          <RouterLink class="flex flex-shrink-0 items-center mr-4" to="/">
+          <NuxtLink class="flex items-center flex-shrink-0 mr-4" to="/">
             <span class="hidden md:block text-black text-2xl font-bold ml-2 text-wildcard-a">
               Air
             </span>
             <span class="hidden md:block text-black text-2xl font-bold">
               med
             </span>
-          </RouterLink>
+          </NuxtLink>
           <div class="md:ml-auto">
             <div class="flex space-x-2 font-size-5">
-              <RouterLink
+              <NuxtLink
                 to="/"
                 :class="[
                   isActiveLink('/')
                     ? 'text-wildcard-a font-extrabold'
-                    : 'text-dark-c',
+                    : 'text-dark-b',
                   'px-3',
                   'py-2',
                   'rounded-md',
                 ]"
-                >Home</RouterLink
+                >Home</NuxtLink
               >
-              <RouterLink
+              <NuxtLink
                 to="/about"
                 :class="[
                   isActiveLink('/about')
                     ? 'text-wildcard-a font-extrabold'
-                    : 'text-dark-c',
+                    : 'text-dark-b',
                   'px-3',
                   'py-2',
                   'rounded-md',
                 ]"
-                >About</RouterLink
+                >About</NuxtLink
               >
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 </template>

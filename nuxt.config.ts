@@ -1,9 +1,12 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import path from 'path';
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   routeRules: {
-    // prerender index route by default
     '/': { prerender: true },
+  },
+  alias: {
+    "@": path.resolve(__dirname, "/"),
   },
   modules: [
     '@vueuse/nuxt',
@@ -14,24 +17,16 @@ export default defineNuxtConfig({
     'nuxt-vitest',
     '@nuxt/devtools'
   ],
-
-  experimental: {
-    reactivityTransform: true
-  },
-
   css: ['~/assets/css/main.scss'],
-
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {}
     }
   },
-
   colorMode: {
     classSuffix: ''
   },
-
   headlessui: {
     prefix: ''
   },
@@ -40,7 +35,10 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: "Airmed",
+      title: 'Airmed',
+      
+    
     }
   }
 })
+// <link rel="icon" type="image/svg+xml" href="/logo.svg">

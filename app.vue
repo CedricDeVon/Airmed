@@ -1,4 +1,4 @@
-<script setup>
+<script setup type="ts">
 import './assets/css/main.scss';
 
 useSeoMeta({
@@ -6,9 +6,7 @@ useSeoMeta({
   ogTitle: 'Airmed',
   description: 'The Airmed site',
   ogDescription: 'The Airmed site',
-  ogImage: './assets/icons/logo.svg'
 })
-
 </script>
 
 <template>
