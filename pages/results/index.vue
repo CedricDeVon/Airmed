@@ -1,4 +1,4 @@
-<script setup type="ts">
+<script setup>
 import DiagnosisExpertSystem from '~/diagnosisExpertSystem/diagnosisExpertSystem';
 
 onMounted(() => {

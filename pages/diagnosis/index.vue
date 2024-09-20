@@ -1,7 +1,6 @@
-<script setup type="ts">
-
-import DiagnosisEvaluator from '~/diagnosisExpertSystem/diagnosisEvaluator';
-import DiagnosisExpertSystem from '~/diagnosisExpertSystem/diagnosisExpertSystem';
+<script setup>
+import DiagnosisEvaluator from '~/diagnosisExpertSystem/diagnosisEvaluator.js';
+import DiagnosisExpertSystem from '~/diagnosisExpertSystem/diagnosisExpertSystem.js';
 
 const state = reactive({
     temperatureInCelsius: 37,

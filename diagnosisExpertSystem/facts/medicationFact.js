@@ -1,7 +1,17 @@
 import Fact from './fact.js';
 import TreatmentFact from './treatmentFact.js';
 
+const ALLOWED_MEDICATION = 'Allowed Medication', NO_MEDICATION = 'No Medication';
+
 export default class MedicationFact extends Fact {
+    static get ALLOWED_MEDICATION() {
+        return ALLOWED_MEDICATION;
+    }
+
+    static get NO_MEDICATION() {
+        return NO_MEDICATION;
+    }
+
     constructor(treatmentFact) {
         super({ treatmentFact });
 
@@ -9,7 +19,7 @@ export default class MedicationFact extends Fact {
             throw new Error('MedicationFact() Error: Invalid argument(s)');
         }
 
-        this._result = this.isApplicableForMedicine() ? 'Allowed Medication' : 'No Medication';
+        this._result = this.isApplicableForMedicine() ? ALLOWED_MEDICATION : NO_MEDICATION;
     }
 
     isApplicableForMedicine() {

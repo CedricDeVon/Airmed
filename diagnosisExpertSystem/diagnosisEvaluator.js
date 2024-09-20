@@ -1,5 +1,3 @@
-import Validator from '../utilities/validator.js';
-
 import TemperatureInCelsiusFact from './facts/temperatureInCelsiusFact.js';
 import NasalBreathingFact from './facts/nasalBreathingFact.js';
 import HeadacheFact from './facts/headacheFact.js';
@@ -15,6 +13,16 @@ export default class DiagnosisEvaluation {
     #conclusion
     #facts
 
+    get conclusion() {
+        return this.#conclusion.toString();
+    }
+
+    get facts() {
+        return this.#facts.map((fact) => {
+            return fact.result;
+        })
+    }
+    
     constructor(
         temperatureInCelsius,
         nasalBreathing,
@@ -24,12 +32,12 @@ export default class DiagnosisEvaluation {
         hasAntibioticAllergies
     ) {
         if (
-            Validator.isTypeInvalid(temperatureInCelsius, 'number') ||
-            Validator.isTypeInvalid(nasalBreathing, 'string') ||
-            Validator.isTypeInvalid(hasHeadache, 'boolean') ||
-            Validator.isTypeInvalid(isCoughing, 'boolean') ||
-            Validator.isTypeInvalid(hasSoreThroat, 'boolean') ||
-            Validator.isTypeInvalid(hasAntibioticAllergies, 'boolean')
+            typeof(temperatureInCelsius) !== 'number' ||
+            typeof(nasalBreathing) !== 'string' ||
+            typeof(hasHeadache) !== 'boolean' ||
+            typeof(isCoughing) !== 'boolean' ||
+            typeof(hasSoreThroat) !== 'boolean' ||
+            typeof(hasAntibioticAllergies) !== 'boolean'
         ) {
             throw new Error('DiagnosisEvaluation() Error: Invalid argument(s)')
         }
@@ -53,13 +61,13 @@ export default class DiagnosisEvaluation {
             return;
         }
 
-        const headacheFact = new HeadacheFact(hasHeadache);
-        const coughingFact = new CoughingFact(isCoughing);
-        const coldFact = new ColdFact(
-            temperatureInCelsiusFact,
-            headacheFact,
-            nasalBreathingFact,
-            coughingFact
+        const headacheFact = new HeadacheFact(hasHeadache),
+            coughingFact = new CoughingFact(isCoughing),
+            coldFact = new ColdFact(
+                temperatureInCelsiusFact,
+                headacheFact,
+                nasalBreathingFact,
+                coughingFact
         );
         this.#facts.push(headacheFact, coughingFact, coldFact);
         if (coldFact.hasNoCold()) {
@@ -67,28 +75,18 @@ export default class DiagnosisEvaluation {
             return;
         }
 
-        const soreThroatFact = new SoreThroatFact(hasSoreThroat);
-        const treatmentFact = new TreatmentFact(coldFact, soreThroatFact);
-        const medicationFact = new MedicationFact(treatmentFact);
+        const soreThroatFact = new SoreThroatFact(hasSoreThroat),
+            treatmentFact = new TreatmentFact(coldFact, soreThroatFact),
+            medicationFact = new MedicationFact(treatmentFact);
         this.#facts.push(soreThroatFact, treatmentFact, medicationFact);
         if (treatmentFact.isNotTreatable() && medicationFact.isNotApplicableForMedicine()) {
             this.#conclusion = 'No Medication Required';
             return;
         }
 
-        const antibioticAllergiesFact = new AntibioticAllergiesFact(hasAntibioticAllergies);
-        const antibioticsMedicationFact = new AntibioticsMedicationFact(medicationFact, antibioticAllergiesFact);
+        const antibioticAllergiesFact = new AntibioticAllergiesFact(hasAntibioticAllergies),
+            antibioticsMedicationFact = new AntibioticsMedicationFact(medicationFact, antibioticAllergiesFact);
         this.#facts.push(antibioticAllergiesFact);
         this.#conclusion = antibioticsMedicationFact.result;
-    }
-
-    get conclusion() {
-        return this.#conclusion.toString();
-    }
-
-    get facts() {
-        return this.#facts.map((fact) => {
-            return fact.result;
-        })
     }
 }

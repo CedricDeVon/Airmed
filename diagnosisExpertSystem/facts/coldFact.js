@@ -4,7 +4,17 @@ import HeadacheFact from './headacheFact.js';
 import NasalBreathingFact from './nasalBreathingFact.js';
 import CoughingFact from './coughingFact.js';
 
+const COLD = 'Cold', NO_COLD = 'No Cold';
+
 export default class ColdFact extends Fact {
+    static get COLD() {
+        return COLD;
+    }
+
+    static get NO_COLD() {
+        return NO_COLD;
+    }
+
     constructor(temperatureInCelsiusFact, headacheFact, nasalBreathingFact, coughingFact) {
         super({ temperatureInCelsiusFact, headacheFact, nasalBreathingFact, coughingFact });
 
@@ -17,7 +27,7 @@ export default class ColdFact extends Fact {
             throw new Error('ColdFact() Error: Invalid argument(s)');
         }
 
-        this._result = this.hasCold() ? 'Cold' : 'No Cold';
+        this._result = this.hasCold() ? COLD : NO_COLD;
     }
 
     hasCold() {
